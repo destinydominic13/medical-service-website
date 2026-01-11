@@ -119,7 +119,7 @@ export default function WorkShop() {
 
 export function HowItWorks() {
   return (
-    <section className="bg-[#fffdf9] py-24 px-6">
+    <section className="bg-[#ffff] py-16 px-6">
       <div className="mx-auto max-w-7xl text-center">
         <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-4">
           How It Works
@@ -132,45 +132,57 @@ export function HowItWorks() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Step 1 */}
-          <div className="bg-white rounded-3xl p-10 shadow-sm">
-            <span className="inline-block rounded-full bg-yellow-400 px-6 py-2 text-sm font-semibold text-white mb-6">
-              Step 1:
-            </span>
-            <h3 className="text-xl font-semibold text-teal-900 mb-4">
-              The Needs Assessment.
-            </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              A 15-minute audit to identify your clinic’s biggest administrative
-              bottlenecks.
-            </p>
+          <div className="bg-white rounded-[59px] p-10 shadow-sm w-[387px] h-[404px]">
+            <div className="flex flex-col justify-around h-full items-center">
+              <span className="inline-block rounded-full bg-yellow-400 px-6 py-2 text-sm font-semibold text-white mb-6">
+                Step 1:
+              </span>
+              <div className="flex flex-col justify-center items-center">
+                <h3 className="text-[30px] font-semibold text-teal-900 mb-4">
+                  The Needs Assessment.
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  A 15-minute audit to identify your clinic’s biggest administrative
+                  bottlenecks.
+                </p>
+              </div>
+
+            </div>
           </div>
 
           {/* Step 2 */}
-          <div className="bg-white rounded-3xl p-10 shadow-sm">
-            <span className="inline-block rounded-full bg-teal-400 px-6 py-2 text-sm font-semibold text-white mb-6">
-              Step 2:
-            </span>
-            <h3 className="text-xl font-semibold text-teal-900 mb-4">
-              Custom Onboarding
-            </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              We match you with a trained assistant and align them with your
-              unique SOPs and software.
-            </p>
+          <div className="bg-white rounded-[59px] p-10 shadow-sm w-[387px] h-[404px]">
+            <div className="flex flex-col justify-around h-full items-center">
+              <span className="inline-block rounded-full bg-teal-400 px-6 py-2 text-sm font-semibold text-white mb-6">
+                Step 2:
+              </span>
+              <h3 className="text-[30px] font-semibold text-teal-900 mb-4">
+                Custom Onboarding
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                We match you with a trained assistant and align them with your
+                unique SOPs and software.
+              </p>
+            </div>
           </div>
 
           {/* Step 3 */}
-          <div className="bg-white rounded-3xl p-10 shadow-sm">
-            <span className="inline-block rounded-full bg-pink-400 px-6 py-2 text-sm font-semibold text-white mb-6">
-              Step 3:
-            </span>
-            <h3 className="text-xl font-semibold text-teal-900 mb-4">
-              The 30-Day Money Back Guarantee
-            </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Start with full support. If you aren’t more efficient within 30
-              days, we’ll make it right.
-            </p>
+          <div className="bg-white rounded-[59px] p-10 shadow-sm w-[387px] h-[404px]">
+            <div className="flex flex-col justify-around h-full items-center">
+              <span className="inline-block rounded-full bg-pink-400 px-6 py-2 text-sm font-semibold text-white mb-6">
+                Step 3:
+              </span>
+              <div className="flex flex-col justify-center items-center">
+                <h3 className="text-[30px] font-semibold text-teal-900 mb-4">
+                The 30-Day Money Back Guarantee
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Start with full support. If you aren’t more efficient within 30
+                days, we’ll make it right.
+              </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

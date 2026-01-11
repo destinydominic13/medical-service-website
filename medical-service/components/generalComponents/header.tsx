@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 
 const navigationItems = [
-    { title: "Home", href: "/" },
+    { title: "Home", href: "#hero" },
     { title: "What We Do", href: "#what-we-do" },
     { title: "Core Solutions", href: "#core-solutions" },
     { title: "Workshop & Trainings", href: "#workshop-trainings" },
@@ -28,16 +28,16 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 w-full">
+        <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10">
 
             {/* Navigation bar with transparent gradient background */}
             <nav
                 className="relative px-4 sm:px-6 lg:px-8 backdrop-blur-sm"
                 style={{
-                    background: "linear-gradient(to right, rgba(45, 212, 191, 0.95), rgba(20, 184, 166, 0.95), rgba(13, 148, 136, 0.95))"
+                    background: "linear-gradient(to right, #00A6A690, #006B6B)"
                 }}
             >
-                <div className="mx-auto flex max-w-7xl items-center justify-between py-4">
+                <div className="mx-auto flex items-center lg:justify-around justify-between py-6 max-w-8xl">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-2 z-10">
                         <Image src="/logomedic.svg" alt="Logo" width={100} height={100} />
@@ -64,19 +64,20 @@ export default function Header() {
                             </NavigationMenuList>
                         </NavigationMenu>
                     </div>
-                    {/* Contact Us Button */}
+                    {/* Contact Us Button - Desktop Only */}
                     <Button
                         asChild
-                        className="bg-teal-700 hover:bg-teal-800 text-white rounded-md px-6 py-5"
+                        className="hidden lg:flex bg-primary hover:bg-primary/90 text-white rounded-md font-semibold text-base shadow-md hover:shadow-lg transition-all duration-200"
                     >
                         <Link href="#contact">Contact Us</Link>
                     </Button>
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden text-white p-2 z-10"
+                        className="lg:hidden text-white p-2 z-50 relative"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         aria-label="Toggle menu"
+                        type="button"
                     >
                         {mobileMenuOpen ? (
                             <X className="h-6 w-6" />
@@ -87,35 +88,36 @@ export default function Header() {
                 </div>
 
                 {/* Mobile Navigation Menu */}
-                <div
-                    className={cn(
-                        "lg:hidden absolute top-full left-0 right-0 bg-teal-600/95 backdrop-blur-sm border-t border-teal-700/50 transition-all duration-300 ease-in-out",
-                        mobileMenuOpen
-                            ? "max-h-screen opacity-100 visible"
-                            : "max-h-0 opacity-0 invisible overflow-hidden"
-                    )}
-                >
-                    <div className="px-4 py-6 space-y-4">
-                        {navigationItems.map((item) => (
-                            <Link
-                                key={item.title}
-                                href={item.href}
-                                className="block text-white hover:text-teal-100 hover:bg-white/10 rounded-md px-4 py-2 transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
+                {mobileMenuOpen && (
+                    <div
+                        className="lg:hidden absolute top-full left-0 right-0 z-40 backdrop-blur-sm border-t border-[#006B6B]/50 shadow-lg"
+                        style={{
+                            background: "linear-gradient(to right, rgba(102, 215, 209, 0.98), rgba(0, 107, 107, 0.98))"
+                        }}
+                    >
+                        <div className="px-4 py-6 space-y-3">
+                            {navigationItems.map((item) => (
+                                <Link
+                                    key={item.title}
+                                    href={item.href}
+                                    className="block text-white hover:text-teal-100 hover:bg-white/10 rounded-md px-4 py-3 transition-colors text-base font-medium"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    {item.title}
+                                </Link>
+                            ))}
+                            {/* Contact Us Button - Mobile Only */}
+                            <Button
+                                asChild
+                                className="w-full bg-[#00A6A6] hover:bg-[#006B6B] text-white rounded-md mt-2 py-6 text-base font-medium"
                             >
-                                {item.title}
-                            </Link>
-                        ))}
-                        <Button
-                            asChild
-                            className="w-full bg-teal-700 hover:bg-teal-800 text-white rounded-md mt-4"
-                        >
-                            <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                                Contact Us
-                            </Link>
-                        </Button>
+                                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                                    Contact Us
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
-                </div>
+                )}
             </nav>
         </header>
     )
