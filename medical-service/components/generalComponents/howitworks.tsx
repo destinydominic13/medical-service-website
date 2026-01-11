@@ -119,70 +119,70 @@ export default function WorkShop() {
 
 export function HowItWorks() {
   return (
-    <section className="bg-[#ffff] py-16 px-6">
+    <section className="bg-[#ffff] py-8 sm:py-12 lg:py-16 px-4 sm:px-6 overflow-hidden">
       <div className="mx-auto max-w-7xl text-center">
         <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-4">
           How It Works
         </p>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-teal-900 mb-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-teal-900 mb-8 sm:mb-12 lg:mb-16 px-4">
           Three Steps to a More <br className="hidden md:block" /> Efficient
           Clinic.
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
           {/* Step 1 */}
-          <div className="bg-white rounded-[59px] p-10 shadow-sm w-[387px] h-[404px]">
+          <div className="bg-white rounded-3xl sm:rounded-[59px] p-6 sm:p-8 lg:p-10 shadow-sm w-full max-w-[387px] min-h-[300px] sm:min-h-[350px] lg:h-[404px] flex flex-col">
             <div className="flex flex-col justify-around h-full items-center">
-              <span className="inline-block rounded-full bg-yellow-400 px-6 py-2 text-sm font-semibold text-white mb-6">
+              <span className="inline-block rounded-full bg-yellow-400 px-4 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-white mb-4 sm:mb-6">
                 Step 1:
               </span>
               <div className="flex flex-col justify-center items-center">
-                <h3 className="text-[30px] font-semibold text-teal-900 mb-4">
+                <h3 className="text-xl sm:text-2xl lg:text-[30px] font-semibold text-teal-900 mb-3 sm:mb-4 text-center">
                   The Needs Assessment.
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  A 15-minute audit to identify your clinic’s biggest administrative
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed text-center px-2">
+                  A 15-minute audit to identify your clinic's biggest administrative
                   bottlenecks.
                 </p>
               </div>
-
             </div>
           </div>
 
           {/* Step 2 */}
-          <div className="bg-white rounded-[59px] p-10 shadow-sm w-[387px] h-[404px]">
+          <div className="bg-white rounded-3xl sm:rounded-[59px] p-6 sm:p-8 lg:p-10 shadow-sm w-full max-w-[387px] min-h-[300px] sm:min-h-[350px] lg:h-[404px] flex flex-col">
             <div className="flex flex-col justify-around h-full items-center">
-              <span className="inline-block rounded-full bg-teal-400 px-6 py-2 text-sm font-semibold text-white mb-6">
+              <span className="inline-block rounded-full bg-teal-400 px-4 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-white mb-4 sm:mb-6">
                 Step 2:
               </span>
-              <h3 className="text-[30px] font-semibold text-teal-900 mb-4">
-                Custom Onboarding
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                We match you with a trained assistant and align them with your
-                unique SOPs and software.
-              </p>
+              <div className="flex flex-col justify-center items-center">
+                <h3 className="text-xl sm:text-2xl lg:text-[30px] font-semibold text-teal-900 mb-3 sm:mb-4 text-center">
+                  Custom Onboarding
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed text-center px-2">
+                  We match you with a trained assistant and align them with your
+                  unique SOPs and software.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Step 3 */}
-          <div className="bg-white rounded-[59px] p-10 shadow-sm w-[387px] h-[404px]">
+          <div className="bg-white rounded-3xl sm:rounded-[59px] p-6 sm:p-8 lg:p-10 shadow-sm w-full max-w-[387px] min-h-[300px] sm:min-h-[350px] lg:h-[404px] flex flex-col">
             <div className="flex flex-col justify-around h-full items-center">
-              <span className="inline-block rounded-full bg-pink-400 px-6 py-2 text-sm font-semibold text-white mb-6">
+              <span className="inline-block rounded-full bg-pink-400 px-4 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-white mb-4 sm:mb-6">
                 Step 3:
               </span>
               <div className="flex flex-col justify-center items-center">
-                <h3 className="text-[30px] font-semibold text-teal-900 mb-4">
-                The 30-Day Money Back Guarantee
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Start with full support. If you aren’t more efficient within 30
-                days, we’ll make it right.
-              </p>
+                <h3 className="text-xl sm:text-2xl lg:text-[30px] font-semibold text-teal-900 mb-3 sm:mb-4 text-center">
+                  The 30-Day Money Back Guarantee
+                </h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed text-center px-2">
+                  Start with full support. If you aren't more efficient within 30
+                  days, we'll make it right.
+                </p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
