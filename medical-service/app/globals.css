@@ -133,6 +133,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-urbanist), sans-serif;
@@ -188,5 +191,30 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Prevent badge overlap at zoom levels */
+@media screen and (min-width: 1024px) {
+  /* Ensure badges don't overlap by adding minimum spacing */
+  #hero [class*="absolute"][class*="flex"] {
+    min-width: 0;
+  }
+  
+  /* Reduce badge max-widths to prevent overflow */
+  #hero [class*="max-w-\[360px\]"] {
+    max-width: min(360px, 25vw) !important;
+  }
+  
+  #hero [class*="max-w-\[340px\]"] {
+    max-width: min(340px, 24vw) !important;
+  }
+  
+  #hero [class*="max-w-\[320px\]"] {
+    max-width: min(320px, 23vw) !important;
+  }
+  
+  #hero [class*="max-w-\[300px\]"] {
+    max-width: min(300px, 22vw) !important;
   }
 }

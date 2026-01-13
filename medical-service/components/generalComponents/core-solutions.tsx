@@ -41,7 +41,7 @@ const services = [
 
 export const CoreSolutions = () => {
   return (
-    <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#5539380A]">
+    <section id="core-solutions" className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#5539380A]">
       {/* Background decorative circles - top right */}
       <div className="absolute top-0 left-0 w-full max-w-[428px] h-[521px] overflow-hidden pointer-events-none">
         <div className="relative w-full h-full">
