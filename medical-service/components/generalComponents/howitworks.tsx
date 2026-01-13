@@ -119,7 +119,7 @@ export default function WorkShop() {
 
 export function HowItWorks() {
   return (
-    <section className="bg-[#ffff] py-8 sm:py-12 lg:py-16 px-4 sm:px-6 overflow-hidden">
+    <section id="how-it-works" className="bg-[#ffff] py-8 sm:py-12 lg:py-16 px-4 sm:px-6 overflow-hidden">
       <div className="mx-auto max-w-7xl text-center">
         <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-4">
           How It Works

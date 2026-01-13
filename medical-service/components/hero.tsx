@@ -1,7 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowUpRight } from "lucide-react"
+import { WorkflowAuditForm } from "@/components/generalComponents/workflow-audit-form"
 
 const featureBadges = [
     {
@@ -10,8 +13,7 @@ const featureBadges = [
         icon: <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="41.1129" height="41.1129" rx="20.5565" fill="#FFE6D9" />
             <path d="M18.1327 11.7888C17.8494 11.7888 17.6121 11.6928 17.4207 11.5008C17.2294 11.3088 17.1334 11.0715 17.1327 10.7888C17.1321 10.5062 17.2281 10.2688 17.4207 10.0768C17.6134 9.88482 17.8507 9.78882 18.1327 9.78882H22.1327C22.4161 9.78882 22.6537 9.88482 22.8457 10.0768C23.0377 10.2688 23.1334 10.5062 23.1327 10.7888C23.1321 11.0715 23.0361 11.3092 22.8447 11.5018C22.6534 11.6945 22.4161 11.7902 22.1327 11.7888H18.1327ZM18.1327 23.5388L17.0327 21.3388C16.9494 21.1555 16.8244 21.0178 16.6577 20.9258C16.4911 20.8338 16.3161 20.7882 16.1327 20.7888H11.1827C11.4327 18.5388 12.4077 16.6432 14.1077 15.1018C15.8077 13.5605 17.8161 12.7895 20.1327 12.7888C21.1661 12.7888 22.1577 12.9555 23.1077 13.2888C24.0577 13.6222 24.9494 14.1055 25.7827 14.7388L26.4827 14.0388C26.6661 13.8555 26.8994 13.7595 27.1827 13.7508C27.4661 13.7422 27.6994 13.8382 27.8827 14.0388C28.0661 14.2222 28.1577 14.4555 28.1577 14.7388C28.1577 15.0222 28.0661 15.2555 27.8827 15.4388L27.1827 16.1388C27.7161 16.8388 28.1411 17.5765 28.4577 18.3518C28.7744 19.1272 28.9827 19.9395 29.0827 20.7888H24.7577L23.0327 17.3388C22.8494 16.9555 22.5494 16.7638 22.1327 16.7638C21.7161 16.7638 21.4161 16.9555 21.2327 17.3388L18.1327 23.5388ZM20.1327 30.7888C17.8161 30.7888 15.8077 30.0182 14.1077 28.4768C12.4077 26.9355 11.4327 25.0395 11.1827 22.7888H15.5077L17.2327 26.2388C17.4161 26.6222 17.7161 26.8138 18.1327 26.8138C18.5494 26.8138 18.8494 26.6222 19.0327 26.2388L22.1327 20.0388L23.2327 22.2388C23.3161 22.4222 23.4411 22.5598 23.6077 22.6518C23.7744 22.7438 23.9494 22.7895 24.1327 22.7888H29.0827C28.8327 25.0388 27.8621 26.9345 26.1707 28.4758C24.4794 30.0172 22.4667 30.7882 20.1327 30.7888Z" fill="#553938" />
-        </svg>
-        ,
+        </svg>,
         iconBg: "bg-[#FFE6D9]",
         iconColor: "text-[#8B4513]",
         position: "top-left",
@@ -68,156 +70,161 @@ const featureBadges = [
 ]
 
 export const Hero = () => {
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
     return (
-        <div id="hero" className="bg-linear-to-r from-[#00A6A690] to-[#006B6B] min-h-[calc(100vh-150px)] relative overflow-hidden flex items-center">
-            {/* background image with fade effect */}
-            <div className="absolute inset-0">
-                <Image
-                    src="/bg_circular_lines.svg"
-                    alt="Hero Background"
-                    fill
-                    className="object-cover"
-                    style={{
-                        maskImage: "linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
-                        WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)"
-                    }}
-                />
-            </div>
+        <>
+            <div id="hero" className="bg-linear-to-r from-[#00A6A690] to-[#006B6B] min-h-[calc(100vh-150px)] relative overflow-hidden flex items-center">
+                {/* background image with fade effect */}
+                <div className="absolute inset-0">
+                    <Image
+                        src="/bg_circular_lines.svg"
+                        alt="Hero Background"
+                        fill
+                        className="object-cover"
+                        style={{
+                            maskImage: "linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
+                            WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)"
+                        }}
+                    />
+                </div>
 
-            {/* Main Content */}
-            <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:py-32">
-                {/* Centered Text Content */}
-                <div className="text-center mb-12 mx-auto">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 pt-6 leading-tight">
-                        Get a Virtual Healthcare Assistant <br />When You
-                        Need It Most
-                    </h1>
-                    <p className="text-base sm:text-lg md:text-[22px] text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-                        We help healthcare professionals get administrative, billing, and operational <br />support, all delivered securely, remotely, and fully compliant.
-                    </p>
+                {/* Main Content */}
+                <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:py-32">
+                    {/* Centered Text Content */}
+                    <div className="text-center mb-12 mx-auto">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 pt-6 leading-tight">
+                            Get a Virtual Healthcare Assistant <br />When You
+                            Need It Most
+                        </h1>
+                        <p className="text-base sm:text-lg md:text-[22px] text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+                            We help healthcare professionals get administrative, billing, and operational <br />support, all delivered securely, remotely, and fully compliant.
+                        </p>
 
-                    {/* Mobile Feature Badges Grid - Using same badges as desktop */}
-                    <div className="grid grid-cols-2 gap-2 sm:hidden max-w-2xl mx-auto mb-8">
-                        {featureBadges.map((badge, index) => (
-                            <div
-                                key={`mobile-${index}`}
-                                className="flex items-center rounded-full
+                        {/* Mobile Feature Badges Grid - Using same badges as desktop */}
+                        <div className="grid grid-cols-2 gap-2 sm:hidden max-w-2xl mx-auto mb-8">
+                            {featureBadges.map((badge, index) => (
+                                <div
+                                    key={`mobile-${index}`}
+                                    className="flex items-center rounded-full
                             bg-linear-to-r from-[#F7E9E182] to-[#FFFFFF2E] p-[10px] gap-3
                             shadow-lg hover:shadow-xl transition-all duration-300
                             w-full opacity-0"
-                            style={{
-                                animation: `slideInUp 0.6s ease-out ${index * 0.1}s forwards, float 3s ease-in-out ${0.6 + index * 0.1}s infinite`,
-                            }}
+                                    style={{
+                                        animation: `slideInUp 0.6s ease-out ${index * 0.1}s forwards, float 3s ease-in-out ${0.6 + index * 0.1}s infinite`,
+                                    }}
+                                >
+                                    <div className={`${badge.iconBg} rounded-full shadow-lg shrink-0`}>
+                                        {badge.icon}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-bold text-white text-xs leading-tight mb-1 line-clamp-1">
+                                            {badge.title}
+                                        </h3>
+                                        <p className="text-[10px] text-white/90 leading-tight line-clamp-2">
+                                            {badge.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col gap-4 justify-center items-center mb-12 sm:mb-0 sm:flex-row">
+                            <Button
+                                onClick={() => setIsDialogOpen(true)}
+                                className="bg-[#553938] hover:bg-[#7A3A0A] text-white rounded-md w-full sm:w-auto px-8"
                             >
-                                <div className={`${badge.iconBg} rounded-full shadow-lg shrink-0`}>
-                                    {badge.icon}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <h3 className="font-bold text-white text-xs leading-tight mb-1 line-clamp-1">
-                                        {badge.title}
-                                    </h3>
-                                    <p className="text-[10px] text-white/90 leading-tight line-clamp-2">
-                                        {badge.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                                Book a Free Workflow Audit
+                            </Button>
+                            <Button
+                                asChild
+                                variant="secondary"
+                                className="bg-white hover:bg-gray-100 text-gray-800 rounded-md w-full sm:w-auto px-8 border border-gray-200"
+                            >
+                                <Link href="#how-it-works">See How It Works</Link>
+                            </Button>
+                        </div>
                     </div>
 
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col gap-4 justify-center items-center mb-12 sm:mb-0 sm:flex-row">
-                        <Button
-                            asChild
-                            className="bg-[#553938] hover:bg-[#7A3A0A] text-white rounded-md w-full sm:w-auto px-8"
-                        >
-                            <Link href="#book-audit">Book a Free Workflow Audit</Link>
-                        </Button>
-                        <Button
-                            asChild
-                            variant="secondary"
-                            className="bg-white hover:bg-gray-100 text-gray-800 rounded-md w-full sm:w-auto px-8 border border-gray-200"
-                        >
-                            <Link href="#how-it-works">See How It Works</Link>
-                        </Button>
-                    </div>
-                </div>
+                    {/* Feature Badges - Absolutely Positioned */}
+                    {featureBadges.map((badge, index) => {
+                        const Icon = badge.icon
+                        const positionClasses = {
+                            "top-left": "top-10 left-4 lg:top-30 lg:left-20",
+                            "top-right": "top-10 right-4 lg:top-30 lg:right-10",
+                            "bottom-left": "bottom-10 left-4 lg:bottom-20 lg:left-60",
+                            "bottom-right": "bottom-10 right-4 lg:bottom-20 lg:right-80",
+                        }
 
-                {/* Feature Badges - Absolutely Positioned */}
-                {featureBadges.map((badge, index) => {
-                    const Icon = badge.icon
-                    const positionClasses = {
-                        "top-left": "top-10 left-4 lg:top-30 lg:left-20",
-                        "top-right": "top-10 right-4 lg:top-30 lg:right-10",
-                        "bottom-left": "bottom-10 left-4 lg:bottom-20 lg:left-60",
-                        "bottom-right": "bottom-10 right-4 lg:bottom-20 lg:right-80",
-                    }
+                        // Animation direction based on position
+                        const animationDirection = {
+                            "top-left": "slideInLeft",
+                            "top-right": "slideInRight",
+                            "bottom-left": "slideInLeft",
+                            "bottom-right": "slideInRight",
+                        }[badge.position]
 
-                    // Animation direction based on position
-                    const animationDirection = {
-                        "top-left": "slideInLeft",
-                        "top-right": "slideInRight",
-                        "bottom-left": "slideInLeft",
-                        "bottom-right": "slideInRight",
-                    }[badge.position]
-
-                    return (
-                        <div
-                            key={index}
-                            className={`absolute flex items-center gap-2 ${positionClasses[badge.position as keyof typeof positionClasses]}
+                        return (
+                            <div
+                                key={index}
+                                className={`absolute flex items-center gap-2 ${positionClasses[badge.position as keyof typeof positionClasses]}
                             hidden lg:flex ${badge.position === "bottom-right" || badge.position === "top-right" ? "flex-row-reverse" : ""}
                             opacity-0`}
-                            style={{
-                                animation: `${animationDirection} 0.8s ease-out ${index * 0.15}s forwards, float 3s ease-in-out ${0.8 + index * 0.15}s infinite`,
-                            }}
-                        >
-                            {/* Badge Card */}
-                            <div className="flex items-center rounded-full
+                                style={{
+                                    animation: `${animationDirection} 0.8s ease-out ${index * 0.15}s forwards, float 3s ease-in-out ${0.8 + index * 0.15}s infinite`,
+                                }}
+                            >
+                                {/* Badge Card */}
+                                <div className="flex items-center rounded-full
                             bg-linear-to-r from-[#F7E9E182] to-[#FFFFFF2E] p-[10px] gap-3
                             shadow-lg hover:shadow-xl transition-all duration-300
                             w-auto max-w-[400px]">
-                                {/* Icon Circle */}
-                                <div className={`${badge.iconBg} rounded-full shadow-lg shrink-0`}>
-                                    {badge.icon}
+                                    {/* Icon Circle */}
+                                    <div className={`${badge.iconBg} rounded-full shadow-lg shrink-0`}>
+                                        {badge.icon}
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-bold text-white text-xs lg:text-sm leading-tight mb-1 line-clamp-1">
+                                            {badge.title}
+                                        </h3>
+                                        <p className="text-[10px] lg:text-xs text-white/90 leading-tight line-clamp-2">
+                                            {badge.description}
+                                        </p>
+                                    </div>
                                 </div>
 
-                                {/* Content */}
-                                <div className="flex-1 min-w-0">
-                                    <h3 className="font-bold text-white text-xs lg:text-sm leading-tight mb-1 line-clamp-1">
-                                        {badge.title}
-                                    </h3>
-                                    <p className="text-[10px] lg:text-xs text-white/90 leading-tight line-clamp-2">
-                                        {badge.description}
-                                    </p>
-                                </div>
+                                {/* Circle SVG - Outside the badge card */}
+                                <svg
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 19 19"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="shrink-0"
+                                >
+                                    <path d="M13.8182 9.42163C13.8182 11.8499 11.8497 13.8184 9.42139 13.8184C6.9931 13.8184 5.02458 11.8499 5.02458 9.42163C5.02458 6.99334 6.9931 5.02482 9.42139 5.02482C11.8497 5.02482 13.8182 6.99334 13.8182 9.42163Z" fill={`url(#paint0_linear_${index})`} fillOpacity="0.5" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M9.42172 18.4247C14.3939 18.4247 18.4247 14.3939 18.4247 9.42172C18.4247 4.44951 14.3939 0.418743 9.42172 0.418743C4.44951 0.418743 0.418743 4.44951 0.418743 9.42172C0.418743 14.3939 4.44951 18.4247 9.42172 18.4247ZM9.42172 18.8434C14.6252 18.8434 18.8434 14.6252 18.8434 9.42172C18.8434 4.21825 14.6252 0 9.42172 0C4.21825 0 0 4.21825 0 9.42172C0 14.6252 4.21825 18.8434 9.42172 18.8434Z" fill={`url(#paint1_linear_${index})`} fillOpacity="0.5" />
+                                    <defs>
+                                        <linearGradient id={`paint0_linear_${index}`} x1="9.42172" y1="0" x2="9.87037" y2="30.9571" gradientUnits="userSpaceOnUse">
+                                            <stop stopColor="white" />
+                                            <stop offset="1" stopColor="white" stopOpacity="0" />
+                                        </linearGradient>
+                                        <linearGradient id={`paint1_linear_${index}`} x1="9.42172" y1="-6.23976e-09" x2="9.63109" y2="22.8215" gradientUnits="userSpaceOnUse">
+                                            <stop stopColor="white" />
+                                            <stop offset="0.413266" stopColor="white" stopOpacity="0.586734" />
+                                            <stop offset="1" stopColor="white" stopOpacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
                             </div>
-
-                            {/* Circle SVG - Outside the badge card */}
-                            <svg
-                                width="19"
-                                height="19"
-                                viewBox="0 0 19 19"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="shrink-0"
-                            >
-                                <path d="M13.8182 9.42163C13.8182 11.8499 11.8497 13.8184 9.42139 13.8184C6.9931 13.8184 5.02458 11.8499 5.02458 9.42163C5.02458 6.99334 6.9931 5.02482 9.42139 5.02482C11.8497 5.02482 13.8182 6.99334 13.8182 9.42163Z" fill={`url(#paint0_linear_${index})`} fillOpacity="0.5" />
-                                <path fillRule="evenodd" clipRule="evenodd" d="M9.42172 18.4247C14.3939 18.4247 18.4247 14.3939 18.4247 9.42172C18.4247 4.44951 14.3939 0.418743 9.42172 0.418743C4.44951 0.418743 0.418743 4.44951 0.418743 9.42172C0.418743 14.3939 4.44951 18.4247 9.42172 18.4247ZM9.42172 18.8434C14.6252 18.8434 18.8434 14.6252 18.8434 9.42172C18.8434 4.21825 14.6252 0 9.42172 0C4.21825 0 0 4.21825 0 9.42172C0 14.6252 4.21825 18.8434 9.42172 18.8434Z" fill={`url(#paint1_linear_${index})`} fillOpacity="0.5" />
-                                <defs>
-                                    <linearGradient id={`paint0_linear_${index}`} x1="9.42172" y1="0" x2="9.87037" y2="30.9571" gradientUnits="userSpaceOnUse">
-                                        <stop stopColor="white" />
-                                        <stop offset="1" stopColor="white" stopOpacity="0" />
-                                    </linearGradient>
-                                    <linearGradient id={`paint1_linear_${index}`} x1="9.42172" y1="-6.23976e-09" x2="9.63109" y2="22.8215" gradientUnits="userSpaceOnUse">
-                                        <stop stopColor="white" />
-                                        <stop offset="0.413266" stopColor="white" stopOpacity="0.586734" />
-                                        <stop offset="1" stopColor="white" stopOpacity="0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
-        </div>
+            <WorkflowAuditForm open={isDialogOpen} onOpenChange={setIsDialogOpen} />
+        </>
     )
 }

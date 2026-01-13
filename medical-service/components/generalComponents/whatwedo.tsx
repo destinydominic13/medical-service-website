@@ -24,7 +24,7 @@ export default function WhatWeDo() {
   return (
     <div id="what-we-do" className="relative bg-linear-to-r from-[#00A6A690] to-[#006B6B] ">
       <section
-        className="lg:py-16 py-8 px-4 top-0 left-0 w-full bg-linear-to-b from-[#FFE6D9] to-[#FFFFFF] rounded-t-4xl"
+        className="lg:pt-16 py-8 px-4 top-0 left-0 w-full bg-linear-to-b from-[#FFE6D9] to-[#FFFFFF] rounded-t-4xl"
       >
         <div className="mx-auto max-w-[1500px]">
           {/* Top Banner Section */}
