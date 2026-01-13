@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Linkedin, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Linkedin, Facebook, Instagram, MessageCircle, XIcon, Twitter } from "lucide-react";
 
 export function ContactUs() {
   const [formData, setFormData] = useState({
@@ -83,7 +83,7 @@ export function ContactUs() {
                     href="mailto:gladyswak@gmail.com"
                     className="md:text-[20px] text-[16px] text-[#00373E] hover:text-primary transition-colors"
                   >
-                    gladyswak@gmail.com
+                    virtualmoa@hotmail.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
@@ -137,7 +137,10 @@ export function ContactUs() {
                   className="text-primary hover:text-primary/80 transition-colors"
                   aria-label="WhatsApp"
                 >
-                  <MessageCircle className="h-6 w-6" />
+                  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.49869 18.2082L11.8669 13.8399M11.8669 13.8399L7.49869 7.7915H10.3922L13.5471 12.1597M11.8669 13.8399L15.0218 18.2082H17.9154L13.5471 12.1597M17.9154 7.7915L13.5471 12.1597" stroke="#15ADBF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M25 13C25 19.6274 19.6274 25 13 25C6.37258 25 1 19.6274 1 13C1 6.37258 6.37258 1 13 1C19.6274 1 25 6.37258 25 13Z" stroke="#15ADBF" stroke-width="2" />
+                  </svg>
                 </a>
               </div>
 
@@ -214,7 +217,7 @@ export function ContactUs() {
                 </Button>
               </form>
             </div>
-            
+
           </div>
         </div>
       </div>
