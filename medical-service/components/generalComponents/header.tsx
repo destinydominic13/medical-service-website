@@ -24,6 +24,23 @@ const navigationItems = [
     { title: "FAQ", href: "#faq" },
 ]
 
+const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    const targetId = href.replace("#", "")
+    const targetElement = document.getElementById(targetId)
+    
+    if (targetElement) {
+        const headerOffset = 100 // Adjust based on your header height
+        const elementPosition = targetElement.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        })
+    }
+}
+
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
@@ -32,12 +49,12 @@ export default function Header() {
 
             {/* Navigation bar with transparent gradient background */}
             <nav
-                className="relative px-4 sm:px-6 lg:px-8 backdrop-blur-sm"
+                className="relative px-4 sm:px-6 lg:px-8 backdrop-blur-sm mx-auto"
                 style={{
                     background: "linear-gradient(to right, #00A6A690, #006B6B)"
                 }}
             >
-                <div className="mx-auto flex items-center lg:justify-around justify-between py-6 max-w-8xl">
+                <div className="mx-auto flex items-center lg:justify-between lg:max-w-[1500px] justify-between py-6 max-w-8xl">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-2 z-10">
                         <Image src="/logomedic.svg" alt="Logo" width={100} height={100} />
@@ -49,12 +66,17 @@ export default function Header() {
                             <NavigationMenuList className="gap-1">
                                 {navigationItems.map((item) => (
                                     <NavigationMenuItem key={item.title}>
-                                        <Link href={item.href} legacyBehavior passHref>
+                                        <Link 
+                                            href={item.href} 
+                                            legacyBehavior 
+                                            passHref
+                                        >
                                             <NavigationMenuLink
                                                 className={cn(
                                                     navigationMenuTriggerStyle(),
-                                                    "bg-transparent text-white hover:bg-white/20 hover:text-white data-active:bg-white/20 data-active:text-white"
+                                                    "bg-transparent text-white hover:bg-white/20 hover:text-white data-active:bg-white/20 data-active:text-white cursor-pointer"
                                                 )}
+                                                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleSmoothScroll(e, item.href)}
                                             >
                                                 {item.title}
                                             </NavigationMenuLink>
@@ -69,7 +91,12 @@ export default function Header() {
                         asChild
                         className="hidden lg:flex bg-primary hover:bg-primary/90 text-white rounded-md font-semibold text-base shadow-md hover:shadow-lg transition-all duration-200"
                     >
-                        <Link href="#contact">Contact Us</Link>
+                        <Link 
+                            href="#contact"
+                            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleSmoothScroll(e, "#contact")}
+                        >
+                            Contact Us
+                        </Link>
                     </Button>
 
                     {/* Mobile Menu Button */}
@@ -100,8 +127,11 @@ export default function Header() {
                                 <Link
                                     key={item.title}
                                     href={item.href}
-                                    className="block text-white hover:text-teal-100 hover:bg-white/10 rounded-md px-4 py-3 transition-colors text-base font-medium"
-                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block text-white hover:text-teal-100 hover:bg-white/10 rounded-md px-4 py-3 transition-colors text-base font-medium cursor-pointer"
+                                    onClick={(e) => {
+                                        handleSmoothScroll(e, item.href)
+                                        setMobileMenuOpen(false)
+                                    }}
                                 >
                                     {item.title}
                                 </Link>
@@ -111,7 +141,13 @@ export default function Header() {
                                 asChild
                                 className="w-full bg-[#00A6A6] hover:bg-[#006B6B] text-white rounded-md mt-2 py-6 text-base font-medium"
                             >
-                                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                                <Link 
+                                    href="#contact" 
+                                    onClick={(e) => {
+                                        handleSmoothScroll(e, "#contact")
+                                        setMobileMenuOpen(false)
+                                    }}
+                                >
                                     Contact Us
                                 </Link>
                             </Button>

@@ -151,10 +151,10 @@ export const Hero = () => {
                     {featureBadges.map((badge, index) => {
                         const Icon = badge.icon
                         const positionClasses = {
-                            "top-left": "top-10 left-4 lg:top-30 lg:left-20",
-                            "top-right": "top-10 right-4 lg:top-30 lg:right-10",
-                            "bottom-left": "bottom-10 left-4 lg:bottom-20 lg:left-60",
-                            "bottom-right": "bottom-10 right-4 lg:bottom-20 lg:right-80",
+                            "top-left": "top-10 left-4 lg:top-20 lg:left-8 xl:top-60 xl:left-12 2xl:top-28 2xl:left-16",
+                            "top-right": "top-10 right-4 lg:top-20 lg:right-8 xl:top-60 xl:right-12 2xl:top-28 2xl:right-16",
+                            "bottom-left": "bottom-10 left-4 lg:bottom-16 lg:left-8 xl:bottom-20 xl:left-24 2xl:bottom-24 2xl:left-48",
+                            "bottom-right": "bottom-10 right-4 lg:bottom-16 lg:right-8 xl:bottom-20 xl:right-24 2xl:bottom-24 2xl:right-64",
                         }
 
                         // Animation direction based on position
@@ -170,7 +170,7 @@ export const Hero = () => {
                                 key={index}
                                 className={`absolute flex items-center gap-2 ${positionClasses[badge.position as keyof typeof positionClasses]}
                             hidden lg:flex ${badge.position === "bottom-right" || badge.position === "top-right" ? "flex-row-reverse" : ""}
-                            opacity-0`}
+                            opacity-0 z-20`}
                                 style={{
                                     animation: `${animationDirection} 0.8s ease-out ${index * 0.15}s forwards, float 3s ease-in-out ${0.8 + index * 0.15}s infinite`,
                                 }}
@@ -179,7 +179,7 @@ export const Hero = () => {
                                 <div className="flex items-center rounded-full
                             bg-linear-to-r from-[#F7E9E182] to-[#FFFFFF2E] p-[10px] gap-3
                             shadow-lg hover:shadow-xl transition-all duration-300
-                            w-auto max-w-[400px]">
+                            w-auto max-w-[300px] lg:max-w-[320px] xl:max-w-[340px] 2xl:max-w-[360px]">
                                     {/* Icon Circle */}
                                     <div className={`${badge.iconBg} rounded-full shadow-lg shrink-0`}>
                                         {badge.icon}

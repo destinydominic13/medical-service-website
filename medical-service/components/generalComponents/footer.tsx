@@ -1,8 +1,8 @@
+"use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import * as React from "react";
 
 const navigationLinks = [
   { title: "What We Do", href: "#what-we-do" },
@@ -10,6 +10,23 @@ const navigationLinks = [
   { title: "Workshop & Trainings", href: "#workshop-trainings" },
   { title: "FAQ", href: "#faq" },
 ];
+
+const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault();
+  const targetId = href.replace("#", "");
+  const targetElement = document.getElementById(targetId);
+  
+  if (targetElement) {
+    const headerOffset = 100; // Adjust based on your header height
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  }
+};
 
 export const Footer = () => {
   return (
@@ -41,7 +58,8 @@ export const Footer = () => {
               <Link
                 key={link.title}
                 href={link.href}
-                className="text-white hover:text-teal-100 transition-colors text-sm sm:text-base font-medium"
+                className="text-white hover:text-teal-100 transition-colors text-sm sm:text-base font-medium cursor-pointer"
+                onClick={(e) => handleSmoothScroll(e, link.href)}
               >
                 {link.title}
               </Link>
